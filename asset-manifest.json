@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/loan-app/static/css/main.54608f0f.chunk.css",
+    "main.js": "/loan-app/static/js/main.741c34ce.chunk.js",
+    "main.js.map": "/loan-app/static/js/main.741c34ce.chunk.js.map",
+    "runtime-main.js": "/loan-app/static/js/runtime-main.02d9cb4d.js",
+    "runtime-main.js.map": "/loan-app/static/js/runtime-main.02d9cb4d.js.map",
+    "static/js/2.fe3759be.chunk.js": "/loan-app/static/js/2.fe3759be.chunk.js",
+    "static/js/2.fe3759be.chunk.js.map": "/loan-app/static/js/2.fe3759be.chunk.js.map",
+    "static/js/3.fca2b453.chunk.js": "/loan-app/static/js/3.fca2b453.chunk.js",
+    "static/js/3.fca2b453.chunk.js.map": "/loan-app/static/js/3.fca2b453.chunk.js.map",
+    "index.html": "/loan-app/index.html",
+    "static/css/main.54608f0f.chunk.css.map": "/loan-app/static/css/main.54608f0f.chunk.css.map",
+    "static/js/2.fe3759be.chunk.js.LICENSE.txt": "/loan-app/static/js/2.fe3759be.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.02d9cb4d.js",
+    "static/js/2.fe3759be.chunk.js",
+    "static/css/main.54608f0f.chunk.css",
+    "static/js/main.741c34ce.chunk.js"
+  ]
+}
