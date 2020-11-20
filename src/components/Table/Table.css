@@ -1,0 +1,14 @@
+.Table {
+    margin: 0 auto;
+    min-width: 520px;
+}
+
+td {
+    padding: 5px;
+}
+
+@media (max-width: 560px) {
+    .Table {
+        overflow-x: scroll;
+    }
+}

@@ -1,12 +1,51 @@
 .App {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
   text-align: center;
 }
 
-.App-header {
+.App__header {
   background-color: #282c34;
   font-size: calc(10px + 2vmin);
   color: white;
   padding: 20px;
-  text-align: center;
 }
 
+.App__main {
+  flex: 1;
+  padding: 20px;
+}
+
+.App__radio-wrapper {
+  margin-bottom: 20px;
+}
+
+.App__radio {
+  margin-right: 20px;
+}
+
+.App__input-wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  max-width: 500px;
+  margin: 0 auto 20px;
+}
+
+.App__input {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.App__input-box {
+  margin-top: 10px;
+}
+
+.App__footer {
+  background-color: #282c34;
+  font-size: calc(8px);
+  color: white;
+  padding: 20px;
+}

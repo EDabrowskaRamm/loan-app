@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Snapshot 1`] = `
+<div
+  className="App"
+>
+  <header
+    className="App__header"
+  >
+    <h1>
+      simple loan calculator
+    </h1>
+  </header>
+  <main
+    className="App__main"
+  >
+    <form
+      className="App__form"
+    >
+      <div
+        className="App__radio-wrapper"
+      >
+        <label
+          className="App__radio"
+        >
+          housing loan
+          <input
+            checked={true}
+            name="housing"
+            onChange={[Function]}
+            type="checkbox"
+          />
+        </label>
+        <label
+          className="App__radio"
+        >
+          car loan
+          <input
+            checked={false}
+            name="car"
+            onChange={[Function]}
+            type="checkbox"
+          />
+        </label>
+      </div>
+      <div
+        className="App__input-wrapper"
+      >
+        <label
+          className="App__input"
+        >
+          desired amount:
+          <input
+            className="App__input-box"
+            disabled={false}
+            onChange={[Function]}
+            type="number"
+            value={0}
+          />
+        </label>
+        <label
+          className="App__input"
+        >
+          payback time (in years):
+          <input
+            className="App__input-box"
+            disabled={false}
+            onChange={[Function]}
+            type="number"
+            value={0}
+          />
+        </label>
+        <button
+          disabled={true}
+          onClick={[Function]}
+          type="submit"
+        >
+          calculate
+        </button>
+      </div>
+    </form>
+  </main>
+  <footer
+    className="App__footer"
+  >
+    <p>
+      made by EDR
+    </p>
+  </footer>
+</div>
+`;

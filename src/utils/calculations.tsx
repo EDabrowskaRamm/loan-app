@@ -22,18 +22,18 @@ export const getTableData = (loan: ILoanModel): ITableData[] => {
     }
 
     for (let i = 0; i < loan.time * 12; i++) {
-        let X: number = loan.amount - equity;
-        let asd: number = X * (loan.interest / 100) * (365 / 12) / 365;
-        const thisMonthsInterest: number = X * (loan.interest / 100 / 12);
+        let initial: number = loan.amount - equity;
+        let interest: number = initial * (loan.interest / 100) * (365 / 12) / 365;
+        const thisMonthsInterest: number = initial * (loan.interest / 100 / 12);
 
         equity += (Number(getRate(loan)) - thisMonthsInterest);
 
         data = {
             month: i + 1,
-            initialCapitalBalance: X,
-            paymentOfInterest: asd,
+            initialCapitalBalance: initial,
+            paymentOfInterest: interest,
             creditRepayment: (Number(getRate(loan)) - thisMonthsInterest),
-            fullInstallment: (Number(getRate(loan)) - thisMonthsInterest) + asd,
+            fullInstallment: (Number(getRate(loan)) - thisMonthsInterest) + interest,
             remainingOutstanding: loan.amount - equity
         }
         dataArr.push(data);
