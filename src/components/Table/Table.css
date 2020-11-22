@@ -3,12 +3,14 @@
     min-width: 520px;
 }
 
-td {
-    padding: 5px;
+thead {
+    font-weight: 600;
 }
 
-@media (max-width: 560px) {
-    .Table {
-        overflow-x: scroll;
-    }
+tbody tr:nth-child(2n) {
+    background-color: #e9e9ea;
+}
+
+td {
+    padding: 5px;
 }

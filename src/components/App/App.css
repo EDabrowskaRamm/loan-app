@@ -17,20 +17,25 @@
   padding: 20px;
 }
 
+.App__form {
+  max-width: 450px;
+  margin: 0 auto 20px;
+}
+
 .App__radio-wrapper {
   margin-bottom: 20px;
 }
 
 .App__radio {
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .App__input-wrapper {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  max-width: 500px;
-  margin: 0 auto 20px;
+  margin-bottom: 20px;
 }
 
 .App__input {
@@ -41,6 +46,16 @@
 
 .App__input-box {
   margin-top: 10px;
+}
+
+.App__btn {
+  cursor: pointer;
+  text-transform: uppercase;
+  margin: 5px;
+}
+
+.App__btn:disabled {
+  cursor: auto;
 }
 
 .App__footer {

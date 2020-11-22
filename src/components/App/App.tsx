@@ -3,9 +3,10 @@ import './App.css';
 
 import { ILoanModel } from '../../models/ILoanModel'
 import Table from '../Table/Table'
-import { getRate, getTableData } from '../../utils/calculations'
+import { getRate, getTableData, getDeclinedInstalmentInterestRate, getMinMaxDeclinedInstalmentRate } from '../../utils/calculations'
 
 type LoanType = "housing" | "car";
+export type InstalmentType = "declining" | "fixed";
 
 const App = () => {
 	const [loan, setLoan] = useState<ILoanModel>({
@@ -16,6 +17,7 @@ const App = () => {
 	const [loanType, setLoanType] = useState<LoanType>("housing");
 	const [results, setResults] = useState(false);
 	const [monthlyRate, setMonthlyRate] = useState("");
+	const [instalmentType, setInstalmentType] = useState<InstalmentType>("fixed");
 
 	useEffect(() => {
 		if (loanType === "housing") {
@@ -52,11 +54,20 @@ const App = () => {
 		});
 	}
 
+	const onSelectInstalmentType = (event: React.ChangeEvent) => {
+		const target = event.target as HTMLInputElement;
+		setInstalmentType(target.name as InstalmentType);
+	}
+
 	const onGetData = (event: React.MouseEvent) => {
 		event.preventDefault();
-		const data = getRate(loan);
+		if (instalmentType === "fixed") {
+			const data = getRate(loan);
+			setMonthlyRate(data);
+		} else {
+
+		}
 		setResults(true);
-		setMonthlyRate(data);
 	}
 
 	const onResetData = () => {
@@ -81,27 +92,29 @@ const App = () => {
 				<form className="App__form">
 					<div className="App__radio-wrapper">
 						<label className="App__radio">
-							housing loan
+							Housing loan
 							<input
 								type="checkbox"
 								checked={loanType === "housing"}
 								onChange={onSelectLoanType}
 								name="housing"
+								disabled={results}
 							/>
 						</label>
 						<label className="App__radio">
-							car loan
+							Car loan
 							<input
 								type="checkbox"
 								checked={loanType === "car"}
 								onChange={onSelectLoanType}
 								name="car"
+								disabled={results}
 							/>
 						</label>
 					</div>
 					<div className="App__input-wrapper">
 						<label className="App__input">
-							desired amount:
+							Desired amount:
 							<input
 								type="number"
 								value={loan.amount}
@@ -111,7 +124,7 @@ const App = () => {
 							/>
 						</label>
 						<label className="App__input">
-							payback time (in years):
+							Payback time (in years):
 							<input
 								type="number"
 								value={loan.time}
@@ -120,30 +133,73 @@ const App = () => {
 								disabled={results}
 							/>
 						</label>
-						<button type="submit" onClick={onGetData} disabled={disabledBtn}>
-							calculate
-						</button>
-						{results && <button type="button" onClick={onResetData}>
-							reset
-						</button>}
 					</div>
+					<div className="App__radio-wrapper">
+						<label className="App__radio">
+							Declining instalments
+							<input
+								type="checkbox"
+								checked={instalmentType === "declining"}
+								onChange={onSelectInstalmentType}
+								name="declining"
+								disabled={results}
+							/>
+						</label>
+						<label className="App__radio">
+							Fixed instalments
+							<input
+								type="checkbox"
+								checked={instalmentType === "fixed"}
+								onChange={onSelectInstalmentType}
+								name="fixed"
+								disabled={results}
+							/>
+						</label>
+					</div>
+					<button
+						type="submit"
+						onClick={onGetData}
+						disabled={disabledBtn}
+						className="App__btn"
+					>
+						calculate
+					</button>
+					{results && <button type="button" onClick={onResetData} className="App__btn">
+						reset
+					</button>}
 				</form>
 				{results && <>
-					<div>
-						<p>
-							Total monthly rate: &nbsp;
+					{instalmentType === "fixed"
+						? <div>
+							<p>
+								Total monthly rate: &nbsp;
 							<span>{monthlyRate}</span>
-						</p>
-						<p>
-							Full cost of credit: &nbsp;
+							</p>
+							<p>
+								Full cost of credit: &nbsp;
 							<span>{getCostOfCredit.toFixed(2)}</span>
-						</p>
-						<p>
-							Amount of interest: &nbsp;
+							</p>
+							<p>
+								Amount of interest: &nbsp;
 							<span>{getAmountOfInterest.toFixed(2)}</span>
-						</p>
-					</div>
-					<Table data={getTableData(loan)} />
+							</p>
+						</div>
+						: <div>
+							<p>
+								Amount of the first instalment: &nbsp;
+							<span>{getMinMaxDeclinedInstalmentRate(loan).max.toFixed(2)}</span>
+							</p>
+							<p>
+								Amount of the last instalment: &nbsp;
+							<span>{getMinMaxDeclinedInstalmentRate(loan).min.toFixed(2)}</span>
+							</p>
+							<p>
+								Interest sum: &nbsp;
+							<span>{getDeclinedInstalmentInterestRate(loan).toFixed(2)}</span>
+							</p>
+						</div>
+					}
+					<Table data={getTableData(loan, instalmentType)} />
 				</>}
 			</main>
 			<footer className="App__footer">

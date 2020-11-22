@@ -23,9 +23,10 @@ exports[`App Snapshot 1`] = `
         <label
           className="App__radio"
         >
-          housing loan
+          Housing loan
           <input
             checked={true}
+            disabled={false}
             name="housing"
             onChange={[Function]}
             type="checkbox"
@@ -34,9 +35,10 @@ exports[`App Snapshot 1`] = `
         <label
           className="App__radio"
         >
-          car loan
+          Car loan
           <input
             checked={false}
+            disabled={false}
             name="car"
             onChange={[Function]}
             type="checkbox"
@@ -49,7 +51,7 @@ exports[`App Snapshot 1`] = `
         <label
           className="App__input"
         >
-          desired amount:
+          Desired amount:
           <input
             className="App__input-box"
             disabled={false}
@@ -61,7 +63,7 @@ exports[`App Snapshot 1`] = `
         <label
           className="App__input"
         >
-          payback time (in years):
+          Payback time (in years):
           <input
             className="App__input-box"
             disabled={false}
@@ -70,14 +72,43 @@ exports[`App Snapshot 1`] = `
             value={0}
           />
         </label>
-        <button
-          disabled={true}
-          onClick={[Function]}
-          type="submit"
-        >
-          calculate
-        </button>
       </div>
+      <div
+        className="App__radio-wrapper"
+      >
+        <label
+          className="App__radio"
+        >
+          Declining instalments
+          <input
+            checked={false}
+            disabled={false}
+            name="declining"
+            onChange={[Function]}
+            type="checkbox"
+          />
+        </label>
+        <label
+          className="App__radio"
+        >
+          Fixed instalments
+          <input
+            checked={true}
+            disabled={false}
+            name="fixed"
+            onChange={[Function]}
+            type="checkbox"
+          />
+        </label>
+      </div>
+      <button
+        className="App__btn"
+        disabled={true}
+        onClick={[Function]}
+        type="submit"
+      >
+        calculate
+      </button>
     </form>
   </main>
   <footer
